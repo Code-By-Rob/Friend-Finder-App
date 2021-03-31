@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#D0FF00</color>
+    <color name="colorPrimaryDark">#D0FF00</color>
+    <color name="colorAccent">#FAF0A2</color>
+
+    <color name="menuItemNonSelected">#5D5D5D</color>
+    <color name="menuItemSelected">#FFFFFF</color>
+    <color name="itemBackgroundSelected">#D0FF00</color>
+    <color name="itemBackgroundUnselected">#FFFFFF</color>
+
+    <color name="goodSimilarity">#4FA447</color>
+</resources>

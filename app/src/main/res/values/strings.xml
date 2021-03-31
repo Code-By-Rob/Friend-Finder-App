@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Friend_Finder_App</string>
+
+<!--    Menu string values-->
+    <string name="nav_chat_name">Chat</string>
+    <string name="nav_search_name">Find</string>
+    <string name="nav_profile_name">Profile</string>
+
+</resources>
