@@ -40,7 +40,7 @@ public class SearchFragment extends Fragment {
         return view;
     }
 
-    public void props() {
+    private void props() {
         personImage = view.findViewById(R.id.searchPersonImage);
         personBestMeme = view.findViewById(R.id.searchBestMeme);
         personBiography = view.findViewById(R.id.searchBiography);

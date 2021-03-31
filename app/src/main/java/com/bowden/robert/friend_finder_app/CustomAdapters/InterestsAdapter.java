@@ -13,7 +13,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class InterestsAdapter extends RecyclerView.Adapter<InterestsAdapter.ViewHolder> {
+public class InterestsAdapter extends RecyclerView.Adapter<InterestsAdapter.InterestsViewHolder> {
 
     private List<String> interests;
     private Context context;
@@ -27,13 +27,13 @@ public class InterestsAdapter extends RecyclerView.Adapter<InterestsAdapter.View
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
-        return new ViewHolder(view);
+    public InterestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(layout, parent, false);
+        return new InterestsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull InterestsViewHolder holder, int position) {
         holder.interest.setText(interests.get(position));
     }
 
@@ -42,11 +42,11 @@ public class InterestsAdapter extends RecyclerView.Adapter<InterestsAdapter.View
         return interests.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class InterestsViewHolder extends RecyclerView.ViewHolder {
 
         private TextView interest;
 
-        public ViewHolder(@NonNull View itemView) {
+        public InterestsViewHolder(@NonNull View itemView) {
             super(itemView);
             interest = itemView.findViewById(R.id.textInterest);
         }

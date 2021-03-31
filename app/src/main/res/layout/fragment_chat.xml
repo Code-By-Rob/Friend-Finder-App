@@ -37,21 +37,10 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/menuItemSelected"
             app:behavior_hideable="false"
             app:behavior_peekHeight="?actionBarSize"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Recents"
-                    android:textSize="18sp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="24dp"/>
-            </RelativeLayout>
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -62,7 +51,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:orientation="vertical"/>
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="?actionBarSize">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Recents"
+                            android:textSize="18sp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="24dp"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
             </ScrollView>
 
         </androidx.core.widget.NestedScrollView>
