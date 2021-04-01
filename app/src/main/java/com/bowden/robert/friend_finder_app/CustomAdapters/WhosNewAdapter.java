@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bowden.robert.friend_finder_app.R;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -19,11 +20,11 @@ public class WhosNewAdapter extends RecyclerView.Adapter<WhosNewAdapter.WhosNewV
     * WhosNewAdapter is used with the chat fragment.
     */
 
-    private List<Integer> newMatches;
+    private List<String> newMatches;
     private Context context;
     private int layout;
 
-    public WhosNewAdapter (List<Integer> newMatches, Context context, int layout) {
+    public WhosNewAdapter (List<String> newMatches, Context context, int layout) {
         this.newMatches = newMatches;
         this.context = context;
         this.layout = layout;
@@ -37,13 +38,15 @@ public class WhosNewAdapter extends RecyclerView.Adapter<WhosNewAdapter.WhosNewV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WhosNewAdapter.WhosNewViewHolder holder, int position) {
-        holder.newMatch.setImageResource(newMatches.get(position));
+    public void onBindViewHolder(@NonNull WhosNewViewHolder holder, int position) {
+        Glide.with(context.getApplicationContext())
+                .load(newMatches.get(position))
+                .into(holder.newMatch);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return newMatches.size();
     }
 
     public class WhosNewViewHolder extends RecyclerView.ViewHolder {
