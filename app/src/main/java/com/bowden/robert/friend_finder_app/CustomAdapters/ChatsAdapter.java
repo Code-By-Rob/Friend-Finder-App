@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bowden.robert.friend_finder_app.R;
+import com.bowden.robert.friend_finder_app.TestClasses.FriendsChatTest;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class ChatsAdapter extends BaseAdapter {
     */
 
     // Members
-    private List<Object> friends;
+    private List<FriendsChatTest> friends;
     private Context context;
     private LayoutInflater layoutInflater;
     // layout_chat_item Props
@@ -39,7 +40,7 @@ public class ChatsAdapter extends BaseAdapter {
      * When adding the friend chat elements remember to chat the type of the List object.
      * The above must also be done for the List member.
      */
-    public ChatsAdapter (List<Object> friends, Context context) {
+    public ChatsAdapter (List<FriendsChatTest> friends, Context context) {
         this.friends = friends;
         this.context = context;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -52,12 +53,12 @@ public class ChatsAdapter extends BaseAdapter {
 
     @Override // could be used to get the chat service of a specific friend?
     public Object getItem(int position) {
-        return null;
+        return friends.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     // Set the attributes for the props in this function here.
@@ -73,6 +74,9 @@ public class ChatsAdapter extends BaseAdapter {
         friendImage = convertView.findViewById(R.id.chatFriendImage);
 
         // use the setter methods, for each of the above variables, to give them their text and image
+        friendName.setText(friends.get(position).getFriendName());
+        recentText.setText(friends.get(position).getRecentText());
+        friendImage.setImageResource(friends.get(position).getFriendimage());
 
         return convertView;
     }

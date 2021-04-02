@@ -24,7 +24,34 @@
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textWhosNew"/>
+        app:layout_constraintTop_toBottomOf="@id/textWhosNew" />
+
+    <RelativeLayout
+        android:id="@+id/friendTitleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/menuItemSelected"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chatNewRecycler">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"
+            android:text="Friends"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="50dp"
+            android:layout_height="2dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:background="@android:color/darker_gray" />
+    </RelativeLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -32,7 +59,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chatNewRecycler">
+        app:layout_constraintTop_toBottomOf="@id/friendTitleLayout">
+
+        <GridView
+            android:id="@+id/friendsGridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="?actionBarSize"
+            android:background="@color/menuItemSelected"
+            android:numColumns="3"
+            android:stretchMode="columnWidth" />
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/chatBottomSheet"
@@ -43,32 +79,43 @@
             app:behavior_peekHeight="?actionBarSize"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="none">
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="vertical">
+                    android:layout_height="?actionBarSize">
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="?actionBarSize">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Recents"
-                            android:textSize="18sp"
-                            android:layout_alignParentLeft="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="24dp"/>
-                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="24dp"
+                        android:text="Recents"
+                        android:textSize="18sp" />
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="2dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="5dp"
+                        android:background="@android:color/darker_gray" />
+                </RelativeLayout>
 
-                </LinearLayout>
-            </ScrollView>
+                <ListView
+                    android:id="@+id/chats"
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    android:layout_weight="1"
+                    android:divider="@null"
+                    android:dividerHeight="5dp"
+                    android:nestedScrollingEnabled="true" />
+
+            </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
 

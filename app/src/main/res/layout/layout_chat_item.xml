@@ -18,14 +18,15 @@
         <ImageView
             android:id="@+id/chatFriendImage"
             android:layout_width="80dp"
-            android:layout_height="80dp" />
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"/>
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/chatFriendName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="16dp"
         android:text="Example name"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/chatRecentText"
@@ -36,11 +37,10 @@
         android:id="@+id/chatRecentText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:text="Here is an example of the recent text"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/chatImage"
         app:layout_constraintTop_toBottomOf="@+id/chatFriendName" />
 

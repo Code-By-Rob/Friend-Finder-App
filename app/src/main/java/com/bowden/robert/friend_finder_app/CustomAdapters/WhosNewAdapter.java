@@ -1,13 +1,16 @@
 package com.bowden.robert.friend_finder_app.CustomAdapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bowden.robert.friend_finder_app.ChatFragment;
 import com.bowden.robert.friend_finder_app.R;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.GlideException;
 
 import java.util.List;
 
@@ -17,14 +20,14 @@ import androidx.recyclerview.widget.RecyclerView;
 public class WhosNewAdapter extends RecyclerView.Adapter<WhosNewAdapter.WhosNewViewHolder> {
 
     /*
-    * WhosNewAdapter is used with the chat fragment.
-    */
+     * WhosNewAdapter is used with the chat fragment.
+     */
 
-    private List<String> newMatches;
+    private List<Integer> newMatches;
     private Context context;
     private int layout;
 
-    public WhosNewAdapter (List<String> newMatches, Context context, int layout) {
+    public WhosNewAdapter(List<Integer> newMatches, Context context, int layout) {
         this.newMatches = newMatches;
         this.context = context;
         this.layout = layout;
@@ -39,9 +42,11 @@ public class WhosNewAdapter extends RecyclerView.Adapter<WhosNewAdapter.WhosNewV
 
     @Override
     public void onBindViewHolder(@NonNull WhosNewViewHolder holder, int position) {
-        Glide.with(context.getApplicationContext())
+        Glide.with(context)
+                .asBitmap()
                 .load(newMatches.get(position))
                 .into(holder.newMatch);
+
     }
 
     @Override
