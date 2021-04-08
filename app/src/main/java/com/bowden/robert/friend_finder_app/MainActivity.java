@@ -12,6 +12,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    /*
+    Welcome!
+    This is the MainActivity.
+    You most likely won't spend much time here.
+    But if you have been coding for a long time,
+    think of this as a break spot.
+    Have a rest. Get your drink of choice or whatever you like :)
+     */
+
     BottomNavigationView bottomNav;
 
     @Override
@@ -21,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation();
     }
 
+    // This is the code for the navigation bar at the bottom which opens up the fragments like search, chat and profile.
+    // The navigation listener is where the real magic is at.
+    // This just sets the first fragment to appear which is the search fragment.
     public void bottomNavigation() {
         bottomNav = findViewById(R.id.bottomNavigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);

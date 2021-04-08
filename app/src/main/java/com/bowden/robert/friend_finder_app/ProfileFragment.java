@@ -46,6 +46,7 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
+    // Initialises all of the properties that will change from the fragment_profile.xml file
     private void profileProps() {
         buttonEditProfile = view.findViewById(R.id.editProfileButton);
         profileImage = view.findViewById(R.id.profileImage);
@@ -58,6 +59,7 @@ public class ProfileFragment extends Fragment {
                 "will know what my middle finger looks like");
     }
 
+    // Chnages the current fragment to the editProfileFragment
     private void editProfileButton() {
         buttonEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,12 +72,14 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    // used for testing
     private void setProfileTest() {
         profileImage.setImageResource(R.drawable.myimage);
         profileBio.setText(Bio);
         profileMeme.setImageResource(R.drawable.youtube_meme);
     }
 
+    // used to test the interests RecyclerView
     private void setProfileInterestsTest() {
         interests.add("Video games");
         interests.add("Programming");
@@ -85,6 +89,7 @@ public class ProfileFragment extends Fragment {
         interests.add("Mobile Dev");
     }
 
+    // The initialisation of the RecyclerView.
     private void initProfileRecyclerTest() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false);
         profileInterests.setLayoutManager(layoutManager);

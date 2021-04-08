@@ -1,6 +1,12 @@
 package com.bowden.robert.friend_finder_app.TestClasses;
 
 public class FriendsChatTest {
+
+    /*
+    I feel that these TextClasses don't need much explanation.
+    They were used to test certain aspects of the front-end.
+     */
+
     // Members
     String friendName;
     String recentText;

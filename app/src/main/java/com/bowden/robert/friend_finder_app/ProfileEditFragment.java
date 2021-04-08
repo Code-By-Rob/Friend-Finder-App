@@ -24,6 +24,11 @@ import java.util.List;
 
 public class ProfileEditFragment extends Fragment {
 
+    /*
+    This is the profile edit fragment. I didn't spend much time here and there is work that needs to be done
+    However, I can do this alongside the back-end as it is not essential right now.
+     */
+
     // Properties of fragment_profile_edit
     private View view;
     private ImageView editProfileImage;
@@ -34,7 +39,14 @@ public class ProfileEditFragment extends Fragment {
 
     // Members
     private List<String> interests = new ArrayList<>();
+    /*
+     There will most likely be way more members here and also an interface to be able to communicate with any other fragments (if needed).
+     These other members will be able to store the data inputted into the EditTexts for the user name and bio, etc.
+     This will most likely be put into a JSON object or something of the sort to be communicated to other clients.
+     So that will need to be added here when I add the onClick method for the save button.
+     */
 
+    // The onCreateView -- used to create the view inflated from the layout file in xml.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +58,8 @@ public class ProfileEditFragment extends Fragment {
         return view;
     }
 
+    // this is used to initialise the properties of the xml file inflated in onCreateView.
+    // Essential to changing texts and images, etc.
     private void editProfileProps() {
         editProfileImage = view.findViewById(R.id.editProfileImage);
         editProfileName = view.findViewById(R.id.editProfileName);
@@ -54,6 +68,9 @@ public class ProfileEditFragment extends Fragment {
         editInterests = view.findViewById(R.id.editProfileInterestsGrid);
     }
 
+    // The adapter that is set to the GridView here is explained in greater detail in the EditInterestsAdapter
+    // found CustomAdapters > EditInterestsAdapter.class
+    // There is a few things that need to be added here and will be done in during the back-end.
     private void initEditInterestsAdapter() {
         EditInterestsAdapter adapter = new EditInterestsAdapter(interests, view.getContext());
         editInterests.setAdapter(adapter);
@@ -67,6 +84,7 @@ public class ProfileEditFragment extends Fragment {
     }
 
     // NOTE: Make sure that only 20 interests are being displayed to allow the layout to look semi-normal
+    // This was added to test the adapter to see if things worked as expected.
     private void interestsTest() {
         interests.add("Gaming");
         interests.add("True Crime");

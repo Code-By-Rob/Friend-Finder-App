@@ -51,6 +51,11 @@ public class EditInterestsAdapter extends BaseAdapter {
         return 0;
     }
 
+    /*
+    * The below method is where you can assign the props that will be inflated into the GridView.
+    * I typically use a List object. however, this can be whatever data structure you are comfortable with.
+    * The only true variable here is the text that will be set on the layout file (the constant) for the buttons.
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {

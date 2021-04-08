@@ -24,16 +24,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ChatFragment extends Fragment {
 
-    private View view;
+    // Members
     private List<Integer> newMatches = new ArrayList<>();
     private List<FriendsChatTest> friends = new ArrayList<>();
 
+    // Props
+    private View view;
     private RecyclerView chatNewRecycler;
     private View bottomSheet;
     private BottomSheetBehavior bottomSheetBehavior;
     private ListView chatView;
     private GridView friendView;
 
+    // Necessary method used to create the view layout, i.e. the front end style/ look.
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,11 +50,17 @@ public class ChatFragment extends Fragment {
         return view;
     }
 
+    /*
+    friendView is initialised in the method chatProps().
+    and here I've set the adapter for the friendsView (GridView)
+    See: CustomAdapters > FriendsAdapter for more clarity.
+     */
     private void initFriendsAdapter() {
         FriendsAdapter friendsAdapter = new FriendsAdapter(friends, getActivity());
         friendView.setAdapter(friendsAdapter);
     }
 
+    // initialises the props of the 'fragment_chat.xml' file
     private void chatProps() {
         chatNewRecycler = view.findViewById(R.id.chatNewRecycler);
         bottomSheet = view.findViewById(R.id.chatBottomSheet);
@@ -60,6 +69,7 @@ public class ChatFragment extends Fragment {
         chatView = view.findViewById(R.id.chats);
         friendView = view.findViewById(R.id.friendsGridView);
     }
+
     private void newMatchesTest() {
         newMatches.add(R.drawable.test_person_image_1);
         newMatches.add(R.drawable.test_person_image_2);
@@ -72,6 +82,7 @@ public class ChatFragment extends Fragment {
         newMatches.add(R.drawable.test_person_image_4);
         newMatches.add(R.drawable.test_person_image_5);
     }
+    // sets the layout manager and the adapter for the RecyclerView.
     private void initTestChatRecycler() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false);
         chatNewRecycler.setLayoutManager(layoutManager);
@@ -79,10 +90,14 @@ public class ChatFragment extends Fragment {
         chatNewRecycler.setAdapter(adapter);
     }
 
+    // sets the ListView custom adapter for the chats part of the app.
     private void initChatsAdapter() {
         ChatsAdapter chatsAdapter = new ChatsAdapter(friends, getActivity());
         chatView.setAdapter(chatsAdapter);
     }
+
+    // This was a test for the ChatsAdapter. I recommend commenting this out when attempting to add any
+    // real tests, rather than hard coded.
     private void chatAdapterTest() {
         FriendsChatTest f1 = new FriendsChatTest("Sally", "Hey!", R.drawable.test_person_image_1);
         FriendsChatTest f2 = new FriendsChatTest("Samuel", "Coming to the pub?", R.drawable.test_person_image_2);

@@ -4,6 +4,13 @@ import java.util.List;
 
 public class SearchFriendTest {
 
+    /*
+    I feel that these TextClasses don't need much explanation.
+    They were used to test certain aspects of the front-end.
+    This class was used to test the search screen.
+    Could be used as a template for the data that will be transferred via the sockets classes.
+     */
+
     // Members
     private int imageResourcePP;
     private int imageResourceMeme;

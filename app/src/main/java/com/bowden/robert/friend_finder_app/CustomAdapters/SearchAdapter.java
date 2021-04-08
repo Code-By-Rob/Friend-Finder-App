@@ -23,6 +23,7 @@ public class SearchAdapter extends ArrayAdapter<SearchFriendTest> {
     private Context context;
     private int layout;
 
+    // The constructor
     public SearchAdapter (Context context, int layout, List<SearchFriendTest> friends) {
         super(context, layout, friends);
         this.friends = friends;
@@ -30,6 +31,7 @@ public class SearchAdapter extends ArrayAdapter<SearchFriendTest> {
         this.layout = layout;
     }
 
+    // Necessary methods
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View itemView = convertView;
@@ -51,6 +53,7 @@ public class SearchAdapter extends ArrayAdapter<SearchFriendTest> {
         return itemView;
     }
 
+    // This method is used to initialise the property variables of the layout file 'layout_search_item.xml'.
     private View setSearchProps(View itemView, SearchViewHolder holder) {
         holder.searchPersonImage = itemView.findViewById(R.id.searchPersonImage);
         holder.searchPersonMeme = itemView.findViewById(R.id.searchBestMeme);
@@ -59,6 +62,11 @@ public class SearchAdapter extends ArrayAdapter<SearchFriendTest> {
         holder.searchPersonInterests = itemView.findViewById(R.id.interestsRecycler);
         return itemView;
     }
+    /*
+     This method sets the resources from a TextClass found in the appropriate directory.
+     Also, I understand the warning behind the concat of Strings for a TextView. However,
+     I have not had the energy to change it :/
+     */
     private void setPropResources(int position, SearchViewHolder holder) {
         holder.searchPersonImage.setImageResource(friends.get(position).getImageResourcePP());
         holder.searchPersonMeme.setImageResource(friends.get(position).getImageResourceMeme());
@@ -70,6 +78,7 @@ public class SearchAdapter extends ArrayAdapter<SearchFriendTest> {
         InterestsAdapter adapter = new InterestsAdapter(friends.get(position).getPersonInterests(), context, R.layout.layout_interest_item);
         holder.searchPersonInterests.setAdapter(adapter);
     }
+    // This is the ViewHolder class I spoke about in the InterestsAdapter. Good practice.
     static class SearchViewHolder {
         // Props - These are the props for the search layout; i.e. anything that will change
         ImageView searchPersonImage;

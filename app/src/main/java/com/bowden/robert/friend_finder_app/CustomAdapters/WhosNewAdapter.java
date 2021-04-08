@@ -21,18 +21,22 @@ public class WhosNewAdapter extends RecyclerView.Adapter<WhosNewAdapter.WhosNewV
 
     /*
      * WhosNewAdapter is used with the chat fragment.
+     * The fragment can be found @ res > layout > fragment_chat.xml.
+     * It will only be necessary to access these layout files if you are curious of the id for the front-end objects.
      */
-
+    // Members
     private List<Integer> newMatches;
     private Context context;
     private int layout;
 
+    // Constructor
     public WhosNewAdapter(List<Integer> newMatches, Context context, int layout) {
         this.newMatches = newMatches;
         this.context = context;
         this.layout = layout;
     }
 
+    // Necessary Methods
     @NonNull
     @Override
     public WhosNewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -54,6 +58,7 @@ public class WhosNewAdapter extends RecyclerView.Adapter<WhosNewAdapter.WhosNewV
         return newMatches.size();
     }
 
+    // ViewHolder Class - Used to hold the views that are set data via onBindViewHolder.
     public class WhosNewViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView newMatch;

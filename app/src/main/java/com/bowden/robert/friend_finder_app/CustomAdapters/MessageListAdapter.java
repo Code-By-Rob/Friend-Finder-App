@@ -15,14 +15,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MessageListAdapter extends RecyclerView.Adapter {
 
+    /*
+    * This Adapter is most commented out.
+    * This is because it requires the back-end functionality.
+    * However, I have added comments to the previous adapters similar to this.
+    * I hope they are enough to explain the functionality of these adapters.
+    * There is also example code of how I thought these methods may work.
+    * Feel free to delete them if you want.
+     */
+
+    // Members
     private Context context;
     private List<Object> messageList; // add the message object here
 
+    // Constructor
     public MessageListAdapter (Context context, List<Object> messageList) {
         this.context = context;
         this.messageList = messageList;
     }
 
+    // Necessary Methods.
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
