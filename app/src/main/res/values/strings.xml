@@ -1,9 +1,16 @@
 <resources>
     <string name="app_name">Friend_Finder_App</string>
 
-<!--    Menu string values-->
+    <!--    Menu string values-->
     <string name="nav_chat_name">Chat</string>
     <string name="nav_search_name">Find</string>
     <string name="nav_profile_name">Profile</string>
+
+    <string name="my_profile_text">My Profile</string>
+
+    <string name="edit_profile_button">This button is clicked to access editorial features of a person\'s profile</string>
+    <string name="profile_image">This is a person\'s profile image. It should access their Photo from the edit profile fragment.</string>
+    <string name="profile_meme_image">This is the meme image that a person selects to be on their profile. Could be replaced with a personal image.</string>
+    <string name="edit_profile_image">This is the personal image of the user account. This image should access their photos and allow it to be uploaded to their profile.</string>
 
 </resources>

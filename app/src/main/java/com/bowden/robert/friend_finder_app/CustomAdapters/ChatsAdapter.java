@@ -20,10 +20,12 @@ public class ChatsAdapter extends BaseAdapter {
     * It will take an argument like an ArrayList and use the objects properties to fill
     * the layout's props.
     *
+    * The layout property for the chat is in the directory labelled "layout".
+    *
     * The layout is called 'layout_chat_item' and has 3 props that need the following attributes:
     *   - String (for the name of the friend they are chatting with)
     *   - String (for the latest text that has been sent/received)
-    *   - Image (I would recommend a bitmap. However, this can be any type of image resource)
+    *   - Image (I would recommend a bitmap as they're easy. However, this can be any type of image resource)
     */
 
     // Members
@@ -37,8 +39,9 @@ public class ChatsAdapter extends BaseAdapter {
 
     /*
      * Constructor for the adapter. Used to set the adapter to the LinearLayout.
-     * When adding the friend chat elements remember to chat the type of the List object.
-     * The above must also be done for the List member.
+     * When adding the friend chat elements remember to Change the Type of the List object.
+     * The above must also be done for the List member below.
+     * Currently the List object is using a test class.
      */
     public ChatsAdapter (List<FriendsChatTest> friends, Context context) {
         this.friends = friends;
@@ -46,22 +49,26 @@ public class ChatsAdapter extends BaseAdapter {
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    // The below method must be the size of the List or other Array style object in order to fill the parent layout
     @Override
     public int getCount() {
         return friends.size();
     }
 
-    @Override // could be used to get the chat service of a specific friend?
+    @Override
     public Object getItem(int position) {
         return friends.get(position);
     }
 
+    // gets the unique ID of the item/object in the list.
     @Override
     public long getItemId(int position) {
         return position;
     }
 
     // Set the attributes for the props in this function here.
+    // The below method will set all of the information in the above List to their corresponding
+    // variables, which sets it to the layout; i.e. the variables
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -77,7 +84,9 @@ public class ChatsAdapter extends BaseAdapter {
         friendName.setText(friends.get(position).getFriendName());
         recentText.setText(friends.get(position).getRecentText());
         friendImage.setImageResource(friends.get(position).getFriendimage());
+        // The above is how you should link the items to their layout.
 
         return convertView;
     }
+    // If you have any questions about linking the backend to the adapters, drop me a message on Discord.
 }

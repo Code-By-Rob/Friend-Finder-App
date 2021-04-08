@@ -9,5 +9,8 @@
     <color name="itemBackgroundSelected">#D0FF00</color>
     <color name="itemBackgroundUnselected">#FFFFFF</color>
 
+<!--    // general colours      -->
+    <color name="white">#FFFFFF</color>
+
     <color name="goodSimilarity">#4FA447</color>
 </resources>
