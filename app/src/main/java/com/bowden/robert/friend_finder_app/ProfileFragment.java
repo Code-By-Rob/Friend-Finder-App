@@ -20,19 +20,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static com.bowden.robert.friend_finder_app.ServerClasses.UserProfile.userProfile;
+
 public class ProfileFragment extends Fragment {
     // Members
     private View view;
-    private String Bio;
-    private List<String> interests = new ArrayList<>();
 
     // Properties of fragment_profile
     private ImageButton buttonEditProfile;
-    private ImageView profileImage;
+    private ImageView profileImage1;
     private TextView profileName;
     private TextView profileBio;
     private RecyclerView profileInterests;
-    private ImageView profileMeme;
+    private ImageView profileImage2;
 
     @Nullable
     @Override
@@ -40,7 +40,6 @@ public class ProfileFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         profileProps();
         setProfileTest();
-        setProfileInterestsTest();
         initProfileRecyclerTest();
         editProfileButton();
         return view;
@@ -49,17 +48,14 @@ public class ProfileFragment extends Fragment {
     // Initialises all of the properties that will change from the fragment_profile.xml file
     private void profileProps() {
         buttonEditProfile = view.findViewById(R.id.editProfileButton);
-        profileImage = view.findViewById(R.id.profileImage);
+        profileImage1 = view.findViewById(R.id.profileImage);
         profileName = view.findViewById(R.id.profileName);
         profileBio = view.findViewById(R.id.profileBio);
         profileInterests = view.findViewById(R.id.profileInterestsRecycler);
-        profileMeme = view.findViewById(R.id.profileMyMeme);
-        Bio = ("I love to show people my middle finger. It's my passion, " +
-                "one day I will be a middle finger model and the whole world " +
-                "will know what my middle finger looks like");
+        profileImage2 = view.findViewById(R.id.profileMyMeme);
     }
 
-    // Chnages the current fragment to the editProfileFragment
+    // Changes the current fragment to the editProfileFragment
     private void editProfileButton() {
         buttonEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,26 +70,16 @@ public class ProfileFragment extends Fragment {
 
     // used for testing
     private void setProfileTest() {
-        profileImage.setImageResource(R.drawable.myimage);
-        profileBio.setText(Bio);
-        profileMeme.setImageResource(R.drawable.youtube_meme);
-    }
-
-    // used to test the interests RecyclerView
-    private void setProfileInterestsTest() {
-        interests.add("Video games");
-        interests.add("Programming");
-        interests.add("Photography");
-        interests.add("Netflix");
-        interests.add("Reading");
-        interests.add("Mobile Dev");
+        profileImage1.setImageBitmap(userProfile.getImage1Bitmap());
+        profileImage2.setImageBitmap(userProfile.getImage2Bitmap());
+        profileBio.setText(userProfile.getBio());
     }
 
     // The initialisation of the RecyclerView.
     private void initProfileRecyclerTest() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false);
         profileInterests.setLayoutManager(layoutManager);
-        InterestsAdapter adapter = new InterestsAdapter(interests, view.getContext(), R.layout.layout_interest_item);
+        InterestsAdapter adapter = new InterestsAdapter(userProfile.getInterests(), view.getContext(), R.layout.layout_interest_item);
         profileInterests.setAdapter(adapter);
     }
 

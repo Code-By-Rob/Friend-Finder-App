@@ -1,6 +1,8 @@
 package com.bowden.robert.friend_finder_app.CustomAdapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,22 +11,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bowden.robert.friend_finder_app.R;
+import com.bowden.robert.friend_finder_app.SearchFragment;
+import com.bowden.robert.friend_finder_app.ServerClasses.Profile;
 import com.bowden.robert.friend_finder_app.TestClasses.SearchFriendTest;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class SearchAdapter extends ArrayAdapter<SearchFriendTest> {
+public class SearchAdapter extends ArrayAdapter<Profile> {
 
     // Members
-    private List<SearchFriendTest> friends;
+    private List<Profile> friends;
     private Context context;
     private int layout;
 
     // The constructor
-    public SearchAdapter (Context context, int layout, List<SearchFriendTest> friends) {
+    public SearchAdapter (Context context, int layout, List<Profile> friends) {
         super(context, layout, friends);
         this.friends = friends;
         this.context = context;
@@ -68,14 +73,20 @@ public class SearchAdapter extends ArrayAdapter<SearchFriendTest> {
      I have not had the energy to change it :/
      */
     private void setPropResources(int position, SearchViewHolder holder) {
-        holder.searchPersonImage.setImageResource(friends.get(position).getImageResourcePP());
-        holder.searchPersonMeme.setImageResource(friends.get(position).getImageResourceMeme());
-        holder.searchPersonBio.setText(friends.get(position).getPersonBio());
-        holder.searchPersonName.setText(friends.get(position).getPersonName() + ", " +
-                friends.get(position).getPersonAge());
+//        Glide.with(context)
+//                .load(friends.get(position).getImageBitmap())
+//                .into(holder.searchPersonImage);
+//        Glide.with(context)
+//                .load(friends.get(position).getImageBitmap())
+//                .into(holder.searchPersonMeme);
+        holder.searchPersonImage.setImageBitmap(friends.get(position).getImage1Bitmap());
+        holder.searchPersonMeme.setImageBitmap(friends.get(position).getImage1Bitmap());
+        holder.searchPersonBio.setText(friends.get(position).getBio());
+        holder.searchPersonName.setText(friends.get(position).getNamefirst() + ", " +
+                friends.get(position).getNamelast());
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         holder.searchPersonInterests.setLayoutManager(layoutManager);
-        InterestsAdapter adapter = new InterestsAdapter(friends.get(position).getPersonInterests(), context, R.layout.layout_interest_item);
+        InterestsAdapter adapter = new InterestsAdapter(friends.get(position).getInterests(), context, R.layout.layout_interest_item);
         holder.searchPersonInterests.setAdapter(adapter);
     }
     // This is the ViewHolder class I spoke about in the InterestsAdapter. Good practice.

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewContainer"
+        android:id="@+id/cardView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="20dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonSaveProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,9 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!--            add items to a layout here          -->
             <ScrollView
-                android:id="@+id/scrollView2"
+                android:id="@+id/scrollViewTestDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:scrollbars="none"
@@ -44,7 +45,7 @@
                         app:cardCornerRadius="10dp">
 
                         <ImageView
-                            android:id="@+id/searchPersonImage"
+                            android:id="@+id/userImageTestDisplay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
@@ -59,7 +60,7 @@
                         android:layout_marginRight="10dp"
                         android:text="Similarity Rating"
                         android:textColor="@color/goodSimilarity"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -70,7 +71,7 @@
                         android:textSize="16sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/interestsRecycler"
+                        android:id="@+id/interestsRecyclerTestDisplay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -84,7 +85,7 @@
                         android:background="@android:color/darker_gray" />
 
                     <TextView
-                        android:id="@+id/searchBiography"
+                        android:id="@+id/personBioTestDisplay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -107,7 +108,7 @@
                         app:cardCornerRadius="10dp">
 
                         <ImageView
-                            android:id="@+id/searchBestMeme"
+                            android:id="@+id/userSecondImageTestDisplay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
@@ -132,7 +133,7 @@
                     android:background="@android:color/darker_gray" />
 
                 <TextView
-                    android:id="@+id/searchPersonName"
+                    android:id="@+id/userNameAndAgeTestDisplay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -144,5 +145,18 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/buttonSaveProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="24dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

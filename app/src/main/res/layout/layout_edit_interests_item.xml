@@ -13,6 +13,8 @@
         android:layout_margin="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:background="@drawable/round_button_unselected"
+        android:clickable="false"
+        android:focusable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
