@@ -49,6 +49,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 import static android.app.Activity.RESULT_OK;
 import static com.bowden.robert.friend_finder_app.ServerClasses.UserProfile.userProfile;
 import static java.lang.System.out;
@@ -72,6 +78,7 @@ public class Signup2Fragment extends Fragment {
     private Button buttonImage2;
     private Button buttonSaveImages;
     private Button buttonSaveProfile;
+    private OkHttpClient client = new OkHttpClient();
     // Test Display Props
     private ImageView userImage1;
     private ImageView userImage2;
@@ -80,6 +87,9 @@ public class Signup2Fragment extends Fragment {
     private RecyclerView userInterestsRecycler;
 
     private static String emulatorUrl = "http://10.0.2.2:80/friendfindertest-phpscripts/create_person.php";
+
+    public static final MediaType JSON
+            = MediaType.get("application/json; charset=utf-8");
 
     @Nullable
     @Override
@@ -114,6 +124,8 @@ public class Signup2Fragment extends Fragment {
 
     private String JSONParser(){
         JSONObject userProfile = new JSONObject();
+
+        Log.i("hello",UserProfile.userProfile.getUsername());
         try {
             userProfile.put("username", UserProfile.userProfile.getUsername());
             userProfile.put("PASSWORD", UserProfile.userProfile.getPassword());
@@ -142,6 +154,17 @@ public class Signup2Fragment extends Fragment {
         profile.put("bio", UserProfile.userProfile.getBio());
     }
 
+    String post(String url, String json) throws IOException {
+        RequestBody body = RequestBody.create(JSON, json);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
+        }
+    }
+
     class SendUserProfile extends AsyncTask<String, String, String> {
 
         @Override
@@ -149,28 +172,9 @@ public class Signup2Fragment extends Fragment {
 
             HttpURLConnection urlConnection;
             try {
-                URL url = new URL(emulatorUrl);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setDoOutput(true);
-                urlConnection.setRequestMethod("POST");
-//                urlConnection.setRequestProperty("Content-Type", "application/json");
-//                urlConnection.setRequestProperty("Accept", "application/json");
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(urlConnection.getOutputStream()));
-                writer.write(JSONParser());
+                String response = post(emulatorUrl, JSONParser());
                 Log.i("USERPROFILE", "--->" + JSONParser());
-                writer.close();
-
-                urlConnection.getInputStream();
-                StringBuffer sb = new StringBuffer();
-                BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-                String line;
-                while ((line = br.readLine()) != null) {
-                    sb.append(line + "\n");
-                }
-                String response = sb.toString();
-                Log.i("RESPONSE","--->" + response);
-                br.close();
-                urlConnection.disconnect();
+                Log.i("RESPONSE", response);
             } catch (IOException e) {
                 e.printStackTrace();
             }
