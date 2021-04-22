@@ -57,7 +57,7 @@ public class SearchFragment extends Fragment {
     // List to store the profiles obtained from the server
     private List<Profile> profiles = new ArrayList<>();
     // below are the URLs that have been used to obtain the profiles from the server
-    private static String url_all_persons = "http://192.168.1.67:80/friendfindertest-phpscripts/get_all_persons.php";
+    private static String url_all_persons = "http://192.168.1.67/friendfindertest-phpscripts/get_all_persons.php";
     private static String emulatorUrl = "http://10.0.2.2:80/friendfindertest-phpscripts/get_all_persons.php";
 
 
@@ -135,6 +135,7 @@ public class SearchFragment extends Fragment {
                 URL url = new URL(emulatorUrl);
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
+                urlConnection.setConnectTimeout(30000);
                 urlConnection.setDoOutput(true);
 
                 BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));

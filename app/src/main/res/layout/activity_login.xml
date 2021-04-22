@@ -14,7 +14,7 @@
         android:layout_marginTop="300dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="Email Address / Username"
+        android:hint="Username"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
