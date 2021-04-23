@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bowden.robert.friend_finder_app.ServerClasses.UserProfile;
 
@@ -114,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(main);
             } catch (JSONException e) {
                 e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Details are incorrect!", Toast.LENGTH_SHORT).show();
             }
         }
     }

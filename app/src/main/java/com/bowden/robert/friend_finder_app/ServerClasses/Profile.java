@@ -73,8 +73,8 @@ public class Profile {
         return dob;
     }
 
-    public void setImage1(String image) {
-        this.image1 = image;
+    public void setImage1(String image1) {
+        this.image1 = image1;
     }
     public String getImage1() {
         return image1;
