@@ -43,10 +43,9 @@
                 android:id="@+id/buttonAddImage1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="32dp"
                 android:text="Add Image 1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.247"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextBiography" />
 
@@ -54,12 +53,11 @@
                 android:id="@+id/buttonAddImage2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="24dp"
                 android:text="Add image 2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.403"
-                app:layout_constraintStart_toEndOf="@+id/buttonAddImage1"
-                tools:layout_editor_absoluteY="113dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonAddImage1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
