@@ -71,8 +71,9 @@ public class ProfileFragment extends Fragment {
     // used for testing
     private void setProfileTest() {
         profileImage1.setImageBitmap(userProfile.getImage1Bitmap());
-        profileImage2.setImageBitmap(userProfile.getImage2Bitmap());
+        profileImage2.setImageBitmap(userProfile.getImage1Bitmap());
         profileBio.setText(userProfile.getBio());
+        profileName.setText(userProfile.getNamefirst());
     }
 
     // The initialisation of the RecyclerView.

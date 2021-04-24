@@ -32,15 +32,19 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,6 +52,11 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import static android.app.Activity.RESULT_OK;
 import static com.bowden.robert.friend_finder_app.ServerClasses.UserProfile.userProfile;
@@ -79,7 +88,12 @@ public class Signup2Fragment extends Fragment {
     private TextView userName;
     private RecyclerView userInterestsRecycler;
 
+    private static String url_all_persons = "http://192.168.1.67/friendfindertest-phpscripts/create_person.php";
     private static String emulatorUrl = "http://10.0.2.2:80/friendfindertest-phpscripts/create_person.php";
+    private byte[] profile;
+    public static final MediaType JSON
+            = MediaType.get("application/json; charset=utf-8");
+    private OkHttpClient client = new OkHttpClient();
 
     @Nullable
     @Override
@@ -130,16 +144,54 @@ public class Signup2Fragment extends Fragment {
         return userProfile.toString();
     }
 
-    private void nameValuePair() {
-        HashMap<String, String> profile = new HashMap<>();
-        profile.put("username", UserProfile.userProfile.getUsername());
-        profile.put("PASSWORD", UserProfile.userProfile.getPassword());
-        profile.put("namefirst", UserProfile.userProfile.getNamefirst());
-        profile.put("namelast", UserProfile.userProfile.getNamelast());
-        profile.put("email", UserProfile.userProfile.getEmail());
-        profile.put("dob", UserProfile.userProfile.getDob());
-        profile.put("image1", UserProfile.userProfile.getImage1());
-        profile.put("bio", UserProfile.userProfile.getBio());
+    private byte[] textUrlEncoder() {
+        try {
+            String data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(userProfile.getUsername(), "UTF-8");
+            data += "&" + URLEncoder.encode("PASSWORD", "UTF-8") + "=" + URLEncoder.encode(userProfile.getPassword(), "UTF-8");
+            data += "&" + URLEncoder.encode("namefirst", "UTF-8") + "=" + URLEncoder.encode(userProfile.getNamefirst(), "UTF-8");
+            data += "&" + URLEncoder.encode("namelast", "UTF-8") + "=" + URLEncoder.encode(userProfile.getNamelast(), "UTF-8");
+            data += "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(userProfile.getEmail(), "UTF-8");
+            data += "&" + URLEncoder.encode("dob", "UTF-8") + "=" + URLEncoder.encode(userProfile.getDob(), "UTF-8");
+            data += "&" + URLEncoder.encode("image1", "UTF-8") + "=" + URLEncoder.encode(userProfile.getImage1(), "UTF-8");
+            data += "&" + URLEncoder.encode("bio", "UTF-8") + "=" + URLEncoder.encode(userProfile.getBio(), "UTF-8");
+
+            byte[] postDataBytes = null;
+            postDataBytes = data.getBytes("UTF-8");
+
+            return postDataBytes;
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+//    private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
+//        StringBuilder result = new StringBuilder();
+//        boolean first = true;
+//        for (Map.Entry<String, String> entry : params.entrySet()) {
+//            if (first)
+//                first = false;
+//            else
+//                result.append("&");
+//
+//            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
+//            result.append("=");
+//            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+//        }
+//    }
+
+    // I might have to try and use the volley api.
+
+    private String post(String url, String json) throws IOException {
+        RequestBody body = RequestBody.create(JSON, json);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
+        }
     }
 
     class SendUserProfile extends AsyncTask<String, String, String> {
@@ -147,33 +199,16 @@ public class Signup2Fragment extends Fragment {
         @Override
         protected String doInBackground(String... strings) {
 
-            HttpURLConnection urlConnection;
             try {
-                URL url = new URL(emulatorUrl);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setDoOutput(true);
-                urlConnection.setRequestMethod("POST");
-//                urlConnection.setRequestProperty("Content-Type", "application/json");
-//                urlConnection.setRequestProperty("Accept", "application/json");
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(urlConnection.getOutputStream()));
-                writer.write(JSONParser());
+                String response = post(emulatorUrl, JSONParser());
                 Log.i("USERPROFILE", "--->" + JSONParser());
-                writer.close();
-
-                urlConnection.getInputStream();
-                StringBuffer sb = new StringBuffer();
-                BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-                String line;
-                while ((line = br.readLine()) != null) {
-                    sb.append(line + "\n");
-                }
-                String response = sb.toString();
-                Log.i("RESPONSE","--->" + response);
-                br.close();
-                urlConnection.disconnect();
+                Log.i("RESPONSE", response);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+
+
             return null;
         }
 
@@ -189,6 +224,7 @@ public class Signup2Fragment extends Fragment {
         buttonSaveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                profile = textUrlEncoder();
                 new SendUserProfile().execute();
             }
         });
@@ -344,3 +380,32 @@ public class Signup2Fragment extends Fragment {
     }
 
 }
+//    RequestQueue queue = Volley.newRequestQueue(getContext());
+//
+//    StringRequest stringRequest = new StringRequest(Request.Method.POST, emulatorUrl,
+//            new Response.Listener<String>() {
+//                @Override
+//                public void onResponse(String response) {
+//
+//                }
+//            }, new Response.ErrorListener() {
+//        @Override
+//        public void onErrorResponse(VolleyError error) {
+//
+//        }
+//    }){
+//        protected Map<String, String> getParams() {
+//            Map<String, String> param = new HashMap<>();
+//            param.put("username", userProfile.getUsername());
+//            param.put("PASSWORD", userProfile.getPassword());
+//            param.put("namefirst", userProfile.getNamefirst());
+//            param.put("namelast", userProfile.getNamelast());
+//            param.put("email", userProfile.getEmail());
+//            param.put("dob", userProfile.getDob());
+//            param.put("image1", userProfile.getImage1());
+//            param.put("bio", userProfile.getBio());
+//            return param;
+//        }
+//    };
+//            queue.add(stringRequest);
+//                    queue.start();

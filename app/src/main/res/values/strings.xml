@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Friend_Finder_App</string>
+    <string name="app_name">Friend Finder</string>
 
     <!--    Menu string values-->
     <string name="nav_chat_name">Chat</string>

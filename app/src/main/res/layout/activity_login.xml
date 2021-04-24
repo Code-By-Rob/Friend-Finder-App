@@ -11,12 +11,13 @@
         android:id="@+id/editTextUserLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="400dp"
         android:ems="10"
+        android:hint="Username"
         android:inputType="textEmailAddress"
-        android:hint="Email Address / Username"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,4 +62,15 @@
             android:textSize="20sp"
             android:text="Sign up" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="312dp"
+        android:layout_height="255dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUserLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_friend_finder3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
