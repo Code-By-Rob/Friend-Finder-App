@@ -5,3 +5,5 @@ Please commit and push anything that has been newly written to the project to th
 The 'newly-written' branch can be for anything that has been self-tested and pushed to the repository for the rest of the team to see. 
 
 NOTE: The search fragment won't display profiles without the wamp server. 
+
+[Link to video preview](https://drive.google.com/file/d/19f7GSUPPrGLvbyMUeQqzmTl3iYl1jFOo/view?usp=sharing)
