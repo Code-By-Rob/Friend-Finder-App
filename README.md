@@ -1,9 +1,9 @@
 # Friend-Finder-App
 
 ![ad_V6_AdobeExpress](https://user-images.githubusercontent.com/46360442/176701162-3d58a25f-94c9-4793-88b7-16de1a36649a.gif)
-[Link to video preview](https://youtu.be/kH5EXVccyqQ)
 
 ## Description + motive
+[Link to video preview](https://youtu.be/kH5EXVccyqQ)
 Friend Finder App is an Android native application written in Java. For the Professional Development module in our penultimate year of university at Manchester Metropolitan University.
 
 ### University's Project Description
