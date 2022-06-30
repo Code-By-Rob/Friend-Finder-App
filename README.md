@@ -17,8 +17,17 @@ A piece of software – most likely either a website, or a mobile – which offe
 
 ## Project Completion
 
-Please commit and push anything that has been newly written to the project to the Branch called 'newly-written'. 
-The 'newly-written' branch can be for anything that has been self-tested and pushed to the repository for the rest of the team to see. 
+To complete the project we had to undertake several areas of work for the application. This included the following:
+
+- Research & Analysis
+- Design
+- Implementation
+- Manual
+- Handover
+
+To proove these areas of focus for our assignment, we wrote a technical report & contributed where work had been carried out by the team members working on the project.
+
+The link to that document can be found [here](https://github.com/Code-By-Rob/Friend-Finder-App/blob/Final/Technical_Report_1221.pdf)
 
 NOTE: The search fragment won't display profiles without the wamp server. 
 
