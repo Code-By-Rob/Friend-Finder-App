@@ -1,6 +1,7 @@
 # Friend-Finder-App
 
 ![ad_V6_AdobeExpress](https://user-images.githubusercontent.com/46360442/176701162-3d58a25f-94c9-4793-88b7-16de1a36649a.gif)
+[Link to video preview](https://youtu.be/kH5EXVccyqQ)
 
 ## Description + motive
 Friend Finder App is an Android native application written in Java. For the Professional Development module in our penultimate year of university at Manchester Metropolitan University.
@@ -20,4 +21,4 @@ The 'newly-written' branch can be for anything that has been self-tested and pus
 
 NOTE: The search fragment won't display profiles without the wamp server. 
 
-[Link to video preview](https://drive.google.com/file/d/19f7GSUPPrGLvbyMUeQqzmTl3iYl1jFOo/view?usp=sharing)
+[Link to video preview](https://youtu.be/kH5EXVccyqQ)
