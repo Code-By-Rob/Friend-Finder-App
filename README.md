@@ -4,6 +4,8 @@
 
 [Link to video preview](https://youtu.be/kH5EXVccyqQ)
 
+[Technical Report](https://github.com/Code-By-Rob/Friend-Finder-App/blob/Final/Technical_Report_1221.pdf)
+
 ## Description + motive
 Friend Finder App is an Android native application written in Java. For the Professional Development module in our penultimate year of university at Manchester Metropolitan University.
 
