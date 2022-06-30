@@ -3,7 +3,7 @@
 ![ad_V6_AdobeExpress](https://user-images.githubusercontent.com/46360442/176701162-3d58a25f-94c9-4793-88b7-16de1a36649a.gif)
 
 ## Description + motive
-Friend Finder App is an Android native application written in Java. For the Professional Development module in our preultimate year of university at Manchester Metropolitan University.
+Friend Finder App is an Android native application written in Java. For the Professional Development module in our penultimate year of university at Manchester Metropolitan University.
 
 ### University's Project Description
 Social isolation is a concern for many, and this has been greatly exacerbated by the ongoing pandemic. Meeting others with similar interests is surprisingly tricky in the modern era, especially if you are not already an active member of clubs or societies related to your interests.
